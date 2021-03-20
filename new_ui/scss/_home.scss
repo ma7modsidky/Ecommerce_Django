@@ -1,0 +1,80 @@
+.home {
+    .container {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+
+        @include breakpoint-down(medium) {
+            grid-template-columns: 1fr ;
+            
+        }
+    }
+    .sidebar {
+        @include breakpoint-down(medium) {
+            order: 2;
+        }
+    }
+    &__content {
+        overflow: hidden;
+        @include breakpoint-down(medium) {
+            order: 1;
+        }
+        
+    }
+}
+
+
+
+.swiper-container {
+    width: 100%;
+    max-width: 100%;
+    height: 400px;
+    overflow: hidden;
+
+    @include breakpoint-down(medium) {
+       height: 300px;
+    }
+    @include breakpoint-down(small) {
+        height: 200px;
+    }
+}
+.swiper-wrapper {
+}
+
+.swiper-slide {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 0;
+    
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    p, a{
+        margin-left: 1rem;
+        text-align: left;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: $darkgrey;
+        text-transform: uppercase;
+        @include breakpoint-down(small) {
+            font-size: 0.8rem;
+        }
+        
+    };
+    
+    .white {
+        color: #f4f4f4;
+    }
+
+    a{
+        font-size: 1rem;
+        background-color: black;
+        color: #f4f4f4;
+        border-radius: 5px;
+         @include breakpoint-down(small) {
+             font-size: 0.8rem;
+         }
+    }
+    
+}

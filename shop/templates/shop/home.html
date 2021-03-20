@@ -1,0 +1,129 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% load i18n %}
+{% block title %} Online Shop {% endblock %}
+{% block head %}
+ 
+{% endblock %}
+
+{% block content %}
+{% load shop_tags %}
+<div class="home">
+    <div class="container container--px">
+        <div class="sidebar">
+            {% categories_top_list %}
+            {% custom_banner %} 
+        </div>
+        <div class="home__content">
+            <h2>Latest Deals</h2>
+            
+            <div class="swiper-container">
+                
+                <div class="swiper-wrapper">
+                    
+                    <div class="swiper-slide"
+                    style="background-image: url({% static 'img/slide1n.jpg'%});">
+                      <p class="white">get up to <b>60% Off</b> </p>
+                      <p class="white">new arrivals</p>
+                      <p class="white">limited items available </br>at this price</p>
+                      <a href="" class="button">Shop now</a>
+                    </div>
+                     <div class="swiper-slide"
+                    style="background-image: url({% static 'img/slide2n.jpg'%});">
+                      <p>over <b>200+</b> </p>
+                      <p>great deals</p>
+                      <p>while they last</p>
+                      <a href="" class="button">Shop now</a>
+                    </div>
+                     <div class="swiper-slide"
+                    style="background-image: url({% static 'img/slide3n.jpg'%});">
+                      <p>get up to <b>60% Off</b> </p>
+                      <p>new arrivals</p>
+                      <p>limited items available </br>at this price</p>
+                      <a href="" class="button">Shop now</a>
+                    </div>
+                </div>
+               
+                <div class="swiper-pagination"></div>
+
+            </div>
+
+            <h2>Top products</h2>
+
+            <div class="products__container">
+                {% if products|length > 0 %}
+                {% for product in products %}
+                    <div class="product">
+                        <div class="product__card">
+                            <div class="product__image">
+                                <img src="{% if product.image %}{{ product.image.url }}
+                                        {% else %}{% static "img/no_image.png" %}
+                                        {% endif %}" alt="Product photo">
+                                <div class="product__overlay">
+                                    <button class="add_to_cart" data-id="{{ product.id }}" >
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </button>
+                                    <a href="{{ product.get_absolute_url }}" class="button">View</a>
+                                    <button class="like_product">
+                                        <i class="far fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="product__title"><a href="{{ product.get_absolute_url }}">{{ product.name|truncatechars:20 }}</a></div>
+                            <div class="product__description">{{ product.description}}</div>
+                            <div class="product__price">{{ product.price}}$</div>
+                        </div>
+                    </div>
+                {% endfor %}
+                {% else %}
+               <p>No Products Found</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    
+
+
+</div>
+
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+{% endblock %}   
+
+{% block domready %}
+    var swiper = new Swiper('.swiper-container', {
+      pagination: {
+        el: '.swiper-pagination',
+      },
+    });
+
+
+    const add_to_cart = document.querySelectorAll('.add_to_cart');
+
+    add_to_cart.forEach( button => {
+    button.addEventListener('click', e => {    
+    e.preventDefault();
+    console.log('clicked')
+    let cart_icon = document.querySelector('.cart_items_numbre')
+    let cart_items = parseInt(cart_icon.textContent)
+    let _data = {
+            product_id : button.dataset.id
+        }
+        
+    fetch('{% url "cart:cart_add_ajax" %}',
+    {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken,
+                'X-Requested-With': 'XMLHttpRequest' },
+        body: JSON.stringify(_data)              
+    }).then(response => response.json())
+    .then(response => {
+        if (response['status'] == 'ok') {
+            cart_items += 1
+            cart_icon.textContent = cart_items
+        }
+    })
+    });
+
+    })
+{% endblock %}

@@ -1,0 +1,191 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-16 00:15-0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\cart\forms.py:11 .\cart\templates\cart\detail.html:19
+#: .\older_ui\cart\detail.html:13
+msgid "Quantity"
+msgstr ""
+
+#: .\cart\templates\cart\detail.html:4 .\cart\templates\cart\detail.html:9
+#: .\older_ui\cart\detail.html:4 .\older_ui\cart\detail.html:7
+msgid "Your shopping cart"
+msgstr ""
+
+#: .\cart\templates\cart\detail.html:17 .\older_ui\cart\detail.html:11
+msgid "Image"
+msgstr ""
+
+#: .\cart\templates\cart\detail.html:18 .\older_ui\cart\detail.html:12
+msgid "Product"
+msgstr ""
+
+#: .\cart\templates\cart\detail.html:20 .\cart\templates\cart\detail.html:46
+#: .\older_ui\cart\detail.html:14 .\older_ui\cart\detail.html:40
+msgid "Remove"
+msgstr ""
+
+#: .\cart\templates\cart\detail.html:21 .\older_ui\cart\detail.html:15
+msgid "Unit price"
+msgstr ""
+
+#: .\cart\templates\cart\detail.html:22 .\older_ui\cart\detail.html:16
+msgid "Price"
+msgstr ""
+
+#: .\cart\templates\cart\detail.html:40 .\older_ui\cart\detail.html:34
+msgid "update"
+msgstr ""
+
+#: .\cart\templates\cart\detail.html:57 .\older_ui\cart\detail.html:51
+msgid "Subtotal"
+msgstr ""
+
+#: .\cart\templates\cart\detail.html:63 .\older_ui\cart\detail.html:57
+msgid "coupon"
+msgstr ""
+
+#: .\cart\templates\cart\detail.html:64 .\older_ui\cart\detail.html:58
+msgid "off"
+msgstr ""
+
+#: .\cart\templates\cart\detail.html:73 .\older_ui\cart\detail.html:67
+#: .\older_ui\orders\templates\orders\order\create.html:25
+msgid "Total"
+msgstr ""
+
+#: .\cart\templates\cart\detail.html:81 .\older_ui\cart\detail.html:74
+msgid "Apply a coupon"
+msgstr ""
+
+#: .\cart\templates\cart\detail.html:94 .\older_ui\cart\detail.html:84
+msgid " Continue shopping"
+msgstr ""
+
+#: .\cart\templates\cart\detail.html:98 .\older_ui\cart\detail.html:85
+#: .\older_ui\orders\templates\orders\order\create.html:4
+#: .\older_ui\orders\templates\orders\order\create.html:6
+msgid "Checkout"
+msgstr ""
+
+#: .\coupons\forms.py:6
+msgid "Coupon"
+msgstr ""
+
+#: .\myshop\settings.py:120
+msgid "English"
+msgstr ""
+
+#: .\myshop\settings.py:121
+msgid "Arabic"
+msgstr ""
+
+#: .\older_ui\orders\templates\orders\order\create.html:8
+msgid "Your order"
+msgstr ""
+
+#: .\older_ui\orders\templates\orders\order\create.html:18
+#, python-format
+msgid ""
+"\n"
+"                \"%(code)s\" (%(discount)s%% off)\n"
+"                "
+msgstr ""
+
+#: .\older_ui\orders\templates\orders\order\create.html:29
+msgid "Place order"
+msgstr ""
+
+#: .\older_ui\payment\canceled.html:4
+#: .\payment\templates\payment\canceled.html:4
+msgid "Payment canceled"
+msgstr ""
+
+#: .\older_ui\payment\canceled.html:7
+#: .\payment\templates\payment\canceled.html:8
+msgid "Your payment has not been processed"
+msgstr ""
+
+#: .\older_ui\payment\canceled.html:8
+#: .\payment\templates\payment\canceled.html:9
+msgid "There was a problem processing your payment."
+msgstr ""
+
+#: .\older_ui\payment\done.html:3 .\payment\templates\payment\done.html:3
+msgid "Payment successful"
+msgstr ""
+
+#: .\older_ui\payment\done.html:6 .\payment\templates\payment\done.html:7
+msgid "Your payment was successful"
+msgstr ""
+
+#: .\older_ui\payment\done.html:7 .\payment\templates\payment\done.html:8
+msgid "Your payment has been processed successfully."
+msgstr ""
+
+#: .\older_ui\shop\base.html:8 .\older_ui\shop\base.html:13
+msgid "My shop"
+msgstr ""
+
+#: .\older_ui\shop\base.html:18
+msgid "Language"
+msgstr ""
+
+#: .\older_ui\shop\base.html:34
+msgid "Your cart"
+msgstr ""
+
+#: .\older_ui\shop\base.html:36
+#, python-format
+msgid ""
+"\n"
+"                    %(items)s item, $%(total)s"
+msgid_plural ""
+"\n"
+"                    %(items)s items, $%(total)s\n"
+"                    "
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\older_ui\shop\base.html:43
+msgid "Your cart is empty."
+msgstr ""
+
+#: .\older_ui\shop\product\detail.html:18
+#: .\shop\templates\shop\product\detail.html:32
+msgid "Add to cart"
+msgstr ""
+
+#: .\older_ui\shop\product\list.html:9
+msgid "Categories"
+msgstr ""
+
+#: .\older_ui\shop\product\list.html:12 .\older_ui\shop\product\list.html:24
+#: .\shop\templates\shop\shop_tags\categories_top_list.html:11
+msgid "All"
+msgstr ""
+
+#: .\shop\templates\shop\product\list.html:18
+msgid "All Products"
+msgstr ""
+
+#: .\shop\templates\shop\shop_tags\categories_top_list.html:12
+#, python-format
+msgid "HUGE SALE - 70%% Off"
+msgstr ""

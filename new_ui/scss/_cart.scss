@@ -1,0 +1,77 @@
+.cart {
+    
+    &__container {
+        margin-bottom: 1rem;
+        border: 1px solid rgb(236, 236, 236);
+        border-top: 4px solid $primary;
+        box-shadow: rgba(0, 0, 0, 0.08) 0px 2px 3px 0px;
+        padding: 1rem;
+        color: $darkgrey;
+
+        //for coupons
+        h3 {
+            color: $primary;
+            margin: 0 0 1rem 0 ;
+            
+        }
+        label,
+        select,
+        input {
+            font-size: 1rem;
+            margin-top: 0;
+            padding: 0.5rem;
+        }
+
+    }
+
+    &__table {
+        width: 100%;
+        color: $darkgrey;
+        tr {
+            display: flex;
+            align-items: center;
+            td {
+                flex: 1;
+                text-align: center;
+            }
+            th {
+                flex: 1;
+                padding: 1rem;
+            }
+        }
+        thead tr {
+            width: 100%;
+            text-align: center;
+            color: $primary;
+
+        }
+        tbody tr td img {
+            width: 150px;
+            height: auto;
+        }
+        tbody tr td select,
+        tbody tr td input {
+            font-size: 1rem;
+            margin-top: 0;
+            padding: 0.5rem;
+        }
+
+        .total {
+            border-top: 1px solid $softgrey;
+            border-bottom: 1px solid $softgrey;
+            padding: 1rem;
+            td {
+                font-size: 1.5rem;
+            }
+            .num {
+                color: $primary;
+            }
+        }
+    }
+}
+
+.text-right {
+    
+    color: #f4f4f4;
+    margin-bottom: 1rem;
+}

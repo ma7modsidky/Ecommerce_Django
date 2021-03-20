@@ -3,7 +3,10 @@ from django.views.decorators.http import require_POST
 from shop.models import Product
 from .cart import Cart
 from .forms import CartAddProductForm
+from coupons.forms import CouponApplyForm
 
+from django.http import JsonResponse, HttpResponse
+import json
 # Create your views here.
 
 @require_POST
@@ -20,6 +23,26 @@ def cart_add(request, product_id):
 
 
 @require_POST
+def cart_add_ajax(request):
+    cart = Cart(request)
+    data = json.loads(request.body)
+    product_id = data['product_id']
+    if product_id :
+        if cart.in_cart(product_id) :
+            return JsonResponse({'status': 'already'})
+        else :
+            try :
+                product = get_object_or_404(Product, id=product_id)
+                cart.add(product = product,
+                        quantity = 1,
+                        override_quantity = True)      
+                return JsonResponse({'status': 'ok'})
+            except : 
+                return JsonResponse({'status': 'no'})
+    return JsonResponse({'status': 'error'})
+
+
+@require_POST
 def cart_remove(request, product_id):
     cart = Cart(request)
     product = get_object_or_404(Product, id=product_id)
@@ -33,5 +56,7 @@ def cart_detail(request):
         item['update_quantity_form'] = CartAddProductForm(initial={
             'quantity': item['quantity'],
             'override': True})
-    return render(request, 'cart/detail.html', {'cart': cart})
+    coupon_apply_form = CouponApplyForm()
+    return render(request, 'cart/detail.html', {'cart': cart ,
+                                                'coupon_apply_form': coupon_apply_form})
 

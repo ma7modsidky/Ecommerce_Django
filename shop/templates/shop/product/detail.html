@@ -1,21 +1,39 @@
 {% extends "shop/base.html" %}
 {% load static %}
+{% load shop_tags %}
+{% load i18n %} 
 {% block title %}
  {{ product.name }}
 {% endblock %}
 
 {% block content %}
-    <div class="product-detail">
-        <img src="{% if product.image %}{{ product.image.url }}
-                {% else %}{% static "img/no_image.png" %}{% endif %}">
-        <h1>{{ product.name }}</h1>
-        <h2><a href="{{ product.category.get_absolute_url }}">{{ product.category }}</a></h2>
-        <p class="price">${{ product.price }}</p>
-        <form action="{% url "cart:cart_add" product.id %}" method="post">
-            {{ cart_product_form }}
-            {% csrf_token %}
-            <input type="submit" value="Add to cart">
-        </form>
-        {{ product.description|linebreaks }}
+<div class="container container--px">
+    <div class="product__page">
+        <div class="product__page_image">
+            <img src="{% if product.image %}{{ product.image.url }}
+                {% else %}{% static "img/no_image.png" %}{% endif %}" alt="">
+            <div class="product_image_name">{{ product.name }}</div>    
+        </div>
+        <div class="product__page_details">
+            <h2>{{ product.name }}</h2>
+            {{ product.description|linebreaks }}
+            As low as
+            <div class="price">
+                ${{ product.price }}
+            </div>
+
+            <div class="options">
+                <!-- <div class="control"></div>
+                <div class="add_to_cart"></div>
+                <div class="add_to_favorites"></div> -->
+                <form action="{% url "cart:cart_add" product.id %}" method="post">
+                    {{ cart_product_form }}
+                    {% csrf_token %}
+                    <input type="submit" value="{% trans "Add to cart" %}">
+                </form>
+            </div>
+        </div>
+        {% custom_banner %}
     </div>
+</div>
 {% endblock %}

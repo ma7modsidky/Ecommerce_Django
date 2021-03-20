@@ -1,0 +1,93 @@
+.about_us{
+    &_cover {
+        position: relative;
+        height: 150px;
+        img{
+            position: absolute;
+            object-fit: cover;
+            width: 100%;
+            height: 150px;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            z-index: -1;   
+        }
+        &_text{
+            z-index: 2 ;
+            padding: 1rem;
+            text-transform: uppercase;
+
+            a{
+                border-radius: 5px;
+                color: #f4f4f4;
+                background-color: black;
+                font-size: 1rem;
+                padding: 0.5rem;
+            }
+        }
+        
+    }
+
+    &_content{
+        h1 {
+            color: #21293c;
+        }
+        p{
+            color: #21293c;
+            font-size: 1.5rem;
+            padding: 1.5rem 0;
+        }
+    }
+}
+
+.contact_us {
+    .block_custom {
+        h3 {
+            color: $primary;
+        }
+    }
+    form {
+    flex: 1;
+       text-align: left;
+       padding-right: 2rem;
+        p{
+            label, input, textarea{
+                width: 90%;
+                display: block;
+                padding: 0.5rem;
+            }
+            label{
+                color: $darkgrey;
+            }
+            
+        }
+    }
+
+    &_details {
+        flex: 1;
+            span {
+                color: $primary;
+                font-size: 1.1rem;
+            }
+
+            p {
+                margin: 1rem 0;
+            }
+
+            .footer_social {
+                >* {
+                    display: inline-block;
+                    padding: 0.8rem;
+                    margin-right: 0.5rem;
+                    background-color: $primary;
+                    color: #fff;
+                    border-radius: 3px;
+
+                    &:hover{
+                        opacity: 0.8;
+                    }
+                }
+            }
+           
+    }
+}

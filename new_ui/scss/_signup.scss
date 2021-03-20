@@ -1,0 +1,25 @@
+.signup {
+    
+    .fieldWrapper {
+        label,input {
+            display: block;
+            width: 100%;
+             padding: 0.8rem 0.5rem;
+        }
+    }
+    &__box1 {
+        flex: 1;
+        margin-right: 2rem;
+        @include breakpoint-down(small){
+            margin-right: 0;
+        }
+    }
+
+    &__box2 {
+        flex: 1;
+
+        @include breakpoint-down(medium) {
+            margin-top: 1rem;
+        }
+    }
+}

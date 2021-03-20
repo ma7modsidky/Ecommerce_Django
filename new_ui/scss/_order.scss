@@ -1,0 +1,56 @@
+.order-info {
+    order: 2;
+    flex: 1;
+    ul {
+        list-style: none;
+        li {
+            border-bottom: 1px solid $softgrey;
+            padding: 0.5rem;
+            span {
+                color: $darkgrey;
+            }
+            
+        } 
+    }
+
+    p{  
+        margin: 1rem auto;
+        color: $primary;
+        font-size: 1.5rem;
+    }
+}
+
+.order-form{
+    flex: 1;
+
+     label {
+         display: block;
+         padding: 0.5rem;
+     }
+
+     input {
+         display: block;
+         padding: 0.8rem;
+         width: 80%;
+     }
+}
+
+#payment{
+    border: 1px solid rgb(236, 236, 236);
+    border-top: 4px solid $primary;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 2px 3px 0px;
+    label {
+        display: block;
+        padding: 0.5rem;
+    }
+
+    div {
+        height: 3rem;
+        padding: 0.8rem;
+        // border: 1px solid $softgrey;
+    }
+
+    input[type="submit"]{
+        margin: 1rem;
+    }
+}

@@ -1,74 +1,89 @@
 {% extends "shop/base.html" %}
-
+{% load i18n %}
 {% block title %}Pay by credit card{% endblock %}
 
 {% block content %}
- <h1>Pay by credit card</h1>
- <form id="payment" method="post">
-    <label for="card-number">Card Number</label>
-    <div id="card-number" class="field"></div>
-
-    <label for="cvv">CVV</label>
-    <div id="cvv" class="field"></div>
-
-    <label for="expiration-date">Expiration Date</label>
-    <div id="expiration-date" class="field"></div>
-
-    <input type="hidden" id="nonce" name="payment_method_nonce" value="">
-    {% csrf_token %}
-    <input type="submit" value="Pay">
- </form>
+   <div class="container container--px">
+      <h1>Pay by credit card</h1>
+      <form id="payment" method="post">
+         <label for="card-number">Card Number</label>
+         <div id="card-number" class="field"></div>
+     
+         <label for="cvv">CVV</label>
+         <div id="cvv" class="field"></div>
+     
+         <label for="expiration-date">Expiration Date</label>
+         <div id="expiration-date" class="field"></div>
+     
+         <input type="hidden" id="nonce" name="payment_method_nonce" value="">
+         {% csrf_token %}
+         <input type="submit" value="Pay" class="button">
+      </form>    
+   </div>
  <!-- includes the Braintree JS client SDK -->
- <script src="https://js.braintreegateway.com/web/3.44.2/js/client.min.js"></script>
- <script src="https://js.braintreegateway.com/web/3.44.2/js/hosted-fields.min.js"></script>
+ <script src="https://js.braintreegateway.com/web/3.74.0/js/client.js"></script>
+ <script src="https://js.braintreegateway.com/web/3.74.0/js/hosted-fields.js"></script>
  <script>
-    var form = document.querySelector('#payment');
-    var submit = document.querySelector('input[type="submit"]');
+ 
+var form = document.querySelector('#payment');
+var authorization = '{{ client_token }}';
 
-    // instantiate the Braintree JavaScript client
-    braintree.client.create({
-    authorization: '{{ client_token }}'
-    }, function (clientErr, clientInstance) {
-    if (clientErr) {
-    console.error(clientErr);
+braintree.client.create({
+  authorization: authorization
+}, function(err, clientInstance) {
+  if (err) {
+    console.error(err);
     return;
-    }
-    // instantiate the Hosted Fields component
-    braintree.hostedFields.create({
+  }
+  createHostedFields(clientInstance);
+});
+
+function createHostedFields(clientInstance) {
+  braintree.hostedFields.create({
     client: clientInstance,
-    //specify custom CSS styles
-    styles: {
-    'input': {'font-size': '13px'},
-    'input.invalid': {'color': 'red'},
-    'input.valid': {'color': 'green'}
-    },
-    // specify the id selectors
+   //  styles: {
+   //    'input': {
+   //      'font-size': '16px',
+   //      'font-family': 'courier, monospace',
+   //      'font-weight': 'lighter',
+   //    },
+   //    ':focus': {
+   //      'color': 'black'
+   //    },
+   //    '.valid': {
+   //      'color': '#8bdda8'
+   //    }
+   //  },
     fields: {
-    number: {selector: '#card-number'},
-    cvv: {selector: '#cvv'},
-    expirationDate: {selector: '#expiration-date'}
+      number: {
+        selector: '#card-number',
+        placeholder: '4111 1111 1111 1111'
+      },
+      cvv: {
+        selector: '#cvv',
+        placeholder: '123'
+      },
+      expirationDate: {
+        selector: '#expiration-date',
+        placeholder: 'MM/YYYY'
+      }
     }
-    }, function (hostedFieldsErr, hostedFieldsInstance) {
-    if (hostedFieldsErr) {
-    console.error(hostedFieldsErr);
-    return;
-    }
-    submit.removeAttribute('disabled');
-    form.addEventListener('submit', function (event) {
-    event.preventDefault();
-    hostedFieldsInstance.tokenize(function (tokenizeErr, 
-    payload) {
-    if (tokenizeErr) {
-    console.error(tokenizeErr);
-    return;
-    }
-    // set nonce to send to the server
-    document.getElementById('nonce').value = payload.nonce;
-    // submit form
-    document.getElementById('payment').submit();
-    });
-    }, false);
-    });
-    });
- </script>
+  }, function (err, hostedFieldsInstance) {
+    var tokenize = function (event) {
+      event.preventDefault();
+      
+      hostedFieldsInstance.tokenize(function (err, payload) {
+        if (err) {
+          alert('Something went wrong. Check your card details and try again.');
+          return;
+        }
+        
+        alert('Submit your nonce (' + payload.nonce + ') to your server here!');
+      });
+    };
+    
+    form.addEventListener('submit', tokenize, false);
+  });
+}
+</script>
 {% endblock %}

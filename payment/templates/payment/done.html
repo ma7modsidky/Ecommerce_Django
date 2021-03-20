@@ -1,8 +1,10 @@
 {% extends "shop/base.html" %}
-
-{% block title %}Payment successful{% endblock %}
+{% load i18n %}
+{% block title %}{% trans 'Payment successful' %}{% endblock %}
 
 {% block content %}
- <h1>Your payment was successful</h1>
- <p>Your payment has been processed successfully.</p>
+    <div class="container container--px">
+        <h1>{% trans 'Your payment was successful' %}</h1>
+        <p>{% trans 'Your payment has been processed successfully.' %}</p>
+    </div>
 {% endblock %}

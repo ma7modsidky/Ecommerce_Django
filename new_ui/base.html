@@ -1,0 +1,99 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/8a6bd92f89.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="scss/styles.css">
+    <title>Online Shop</title>
+</head>
+<body>
+    <header class="header">
+        <div class="container container--px">
+            <nav class="flex flex-ai-c flex-jc-sb">
+                <a href="#" id="btnHamburger" class="header__toggle hide-for-desktop ">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </a>
+
+                <a href="" class="header__logo">
+                    <img src="img/logo_white.png" alt="logo">
+                </a>
+
+                <div class="header__search hide-for-mobile">
+                    <input type="text" placeholder="search">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                
+                <div class="header__right_section flex flex-ai-c ">
+
+                    <div class="header__custom_block hide-for-mobile">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>
+                            Call us now<br>
+                            <b>+201111504980</b>
+                        </span>
+                    </div>
+    
+                    <div class="header__search_mobile hide-for-desktop" id="toggleSearch">
+                        <a href="#"><i class="fas fa-search"></i></a>
+                    </div>
+    
+                    <div class="header__cart">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+
+                    <div class="header__user">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+
+            </nav>
+            <div class="header__search_mobile_input hide-for-desktop" id="mobileSearch">
+                <input type="text" placeholder="search">
+            </div>
+        </div>
+    </header>
+    <div class="header__menu" id="header__menu">
+        <div class="container container--px">
+            <ul class="header__links ">
+                <li><a href="">Home</a></li>
+                <li><a href="">Categories</a></li>
+                <li><a href="">Products</a></li>
+                <li><a href="">About us</a></li>
+                <li><a href="">Contacts us</a></li>
+            </ul>
+            <ul class="header__links ">
+                <li><a href="">sign in</a></li>
+                <li><a href="">sign up</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="login">
+        <div class="container container--px">
+            <h2 class="login__title">Customer Login</h2>
+            <div class="login__block">
+                <div class="login__box1">
+                    <h2>Registered Customers</h2>
+                    <p>If you have an account, sign in with your email address</p>
+                    <form action="" method="post">
+                        <label for="email">Email</label>
+                        <input type="email" name="" id="email">
+                        <label for="password">Password</label>
+                        <input type="password" name="" id="password">
+                        <input type="button" value="submit" class="button">
+                    </form>
+                    <a href="#">Forgot your password?</a>
+                </div>
+                <div class="login__box2">
+                    <h2>New Customers</h2>
+                    <p>Creating an account has many benefits: check out faster, keep more than one address, track orders and more.</p>
+                    <a href="#" class="button">create an account</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/header.js"></script>
+</body>
+</html>

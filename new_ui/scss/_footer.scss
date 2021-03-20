@@ -1,0 +1,119 @@
+.footer {
+    background-color: #272723;
+    color: $grey;
+    padding-bottom: 1rem;
+    h3 {
+        color: #fff;
+    }
+    .container {
+        display: grid;
+        grid-template-columns: 2fr repeat(4, 1fr);
+        grid-template-rows: 1fr 1fr 2rem;
+        grid-template-areas: "contact subscripe subscripe subscripe subscripe"
+                            "contact links_account links_account links_features links_features"
+                            "copyright copyright copyright copyright copyright";
+        gap: 1rem;
+        justify-content: center;
+
+        @include breakpoint-down(small) {
+            display: block;
+        }
+              
+    }
+
+    &__contact {
+        grid-area: contact;
+        span {
+            color: #fff;
+            font-size: 1.1rem;
+        }
+
+        p {
+            margin: 1rem 0;
+        }
+
+        .footer_social{
+            > * {
+                display: inline-block;
+                padding: 0.8rem;
+                margin-right: 0.5rem;
+                background-color: $grey;
+                color: #fff;
+                border-radius: 3px;
+            }
+        }
+        @include breakpoint-down(small) {
+            padding-top: 1rem;
+        }
+        
+    }
+
+    &__subscripe {
+        grid-area: subscripe;
+        display: flex;
+        @include breakpoint-down(medium) {
+            flex-direction: column;
+        }
+        .subscripe_text{
+            flex: 1;
+        }
+        .subscripe_email {
+            flex: 1;
+        }
+        input[type='email'] {
+            padding: 0.8rem;
+            margin-right:0 ;
+            width: 50%;
+        }
+        border-bottom: 1px solid $grey;
+        padding-bottom: 1rem;
+    }
+    
+    .account_links {
+        grid-area: links_account;
+    }
+    .features_links {
+        grid-area: links_features;
+    }
+
+    .account_links,
+    .features_links{
+        @include breakpoint-down(small) {
+            padding-bottom: 1rem;
+        }
+        ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            li {
+                width: 50%;
+                padding: 0.5rem 0;
+            }
+        }
+    }
+    
+
+    &__copyrights {
+        grid-area: copyright;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        @include breakpoint-down(small) {
+            flex-direction: column;
+
+        }
+
+        img {
+            @include breakpoint-down(small) {
+                order: 1;
+                margin: 0.5rem auto;
+
+            }
+        }
+
+        border-top: 1px solid $grey;
+        padding-top: 1rem;
+    }
+    
+}

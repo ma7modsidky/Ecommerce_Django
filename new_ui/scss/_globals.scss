@@ -1,0 +1,175 @@
+html,body {
+    font-size: 100%;
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: inherit;
+    margin:0 ;
+    padding: 0;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins','Public Sans',sans-serif;
+    line-height: 1.3;
+    font-weight: 300;
+    overflow-x: hidden;
+}
+
+a, a:visited ,a:hover ,a:any-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+h1,h2,h3 {
+    margin: 1.5rem 0;
+    color: $darkgrey;
+}
+
+
+.container {
+    max-width: 77.5rem;
+    margin: 0 auto;
+
+    //helper classes
+    &--pt {
+        padding-top: 4.375rem;
+    }
+
+    &--pr {
+        padding-right: 1.5rem;
+    }
+
+    &--pb {
+        padding-bottom: 4.375rem;
+    }
+
+    &--pl {
+        padding-left: 1.5rem;
+    }
+
+    &--py {
+        padding-top: 4.375rem;
+        padding-bottom: 4.375rem;
+    }
+
+    &--px {
+        padding-right: 1.5rem;
+        padding-left: 1.5rem;
+    }
+
+    &--pall {
+        padding-top: 4.375rem;
+        padding-bottom: 4.375rem;
+        padding-right: 1.5rem;
+        padding-left: 1.5rem;
+    }
+}
+
+.hide-for-mobile {
+    //hide for mobile and tablet
+    @include breakpoint-down(medium) {
+        display: none;
+    }
+
+}
+
+
+
+.hide-for-desktop {
+    //hide for desktops
+    @include breakpoint-up(large) {
+        display: none;
+    }
+}
+
+//no scroll
+.no-scroll {
+    overflow: hidden;
+}
+
+.clearfix {
+    overflow: auto;
+}
+
+//flexbox
+.flex {
+    display: flex;
+
+    &-jc-sb {
+        justify-content: space-between;
+    }
+
+    &-jc-c {
+        justify-content: center;
+    }
+
+    &-ai-c {
+        align-items: center;
+    }
+}
+
+///specifc for project
+.block_title {
+    color: $primary;
+    font-weight: 300;
+}
+
+.block_custom {
+    
+    border: 1px solid rgb(236, 236, 236);
+    border-top: 4px solid $primary;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 2px 3px 0px;
+    display: flex;
+    padding: 1.5rem;
+    color: $grey;
+
+    @include breakpoint-down(medium) {
+        flex-direction: column;
+    }
+
+    h2 {
+        color: $primary;
+    }
+    
+}
+
+.button {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.8rem;
+    background-color: $primary;
+    color: #f4f4f4;
+    font-weight: 600;
+    text-transform: uppercase;
+    border: none;
+    text-decoration: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1rem;
+    &:hover {
+        opacity: 0.8;
+    }
+
+    &.light {
+        color: $primary;
+        border: 1px solid $primary;
+        background-color: #fff;
+        transition: 0.5s all ease-in-out;
+        &:hover {
+            
+            color: #f4f4f4;
+            border: none;
+            background-color: $primary;
+        }
+    }
+}
+
+#content {
+    margin-bottom: 2rem;
+}

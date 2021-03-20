@@ -1,0 +1,30 @@
+{% extends "shop/base.html" %}
+{% load static%}
+{% block title %}Log-in{% endblock %}
+
+{% block content %}
+    <div class="login">
+        <div class="container container--px">
+            <h2 class="block_title">Customer Login</h2>
+            <div class="block_custom">
+                <div class="login__box1">
+                    <h2>Registered Customers</h2>
+                    <p>If you have an account, sign in with your email address</p>
+                    <form action="{% url 'login' %}" method="post">
+                        {{ form.as_p }}
+                        {% csrf_token %}
+                        <input type="hidden" name="next" value="{{ next }}" />
+                        <p><input type="submit" value="Log-in" class="button"></p>
+            
+                    </form>
+                    <a href="#">Forgot your password?</a>
+                </div>
+                <div class="login__box2">
+                    <h2>New Customers</h2>
+                    <p>Creating an account has many benefits: check out faster, keep more than one address, track orders and more.</p>
+                    <a href="{% url 'register' %}" class="button">create an account</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}    

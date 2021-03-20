@@ -1,0 +1,197 @@
+.header {
+    background-color: $primary;
+    &__logo {
+        img{
+            height: 5rem;
+        }
+    }
+
+    &__toggle {
+        //mobile menu
+        >span {
+            background-color: White;
+            display: block;
+            width: 1.733rem;
+            height: 0.133rem;
+            transition: all 300ms ease-in-out;
+            transform-origin: 4px 1px;
+
+            &:not(:last-child) {
+                margin-bottom: 5px;
+            }
+        }
+    }
+
+    &__search {
+        width: 40%;
+        position: relative;
+        input {
+            color: #6b7a83;
+            width: 100%;
+            padding: 1rem 2rem;
+            padding: 10px;
+            font-size: 16px;
+            border-width: 1px;
+            border-color: #dbe0e2;
+            background-color: #ffffff;
+            border-style: solid;
+            border-radius: 50px;
+            box-shadow: 0px 0px 5px rgba(104, 168, 224, .75);
+            &:focus{
+                outline:none;
+            }
+        }
+        button {
+            border: none;
+            background-color: inherit;
+            color: #6b7a83;
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+
+            i {
+                font-size: 1.5rem;
+            }
+        }
+    }
+
+    &__right_section {
+        justify-content: end;
+    }
+    &__custom_block {
+        @include breakpoint-up(large) {
+            display: flex;
+            align-items: center;
+        }
+        color: #ffffff;
+        margin : 0 1rem;
+        i { 
+            font-size: 2rem;
+        }
+        span {
+            color: aliceblue;
+            margin: 0.5rem;
+            b{
+                color: #ffffff;
+                font-weight: 600;
+            }
+        }
+    }
+
+    &__search_mobile,
+    &__cart,
+    &__user
+     {
+         margin: 0 1rem;
+         @include breakpoint-down(medium) {
+             margin: 0 0.3rem;
+         }
+         i {
+            color: #ffffff;
+            font-size: 1.5rem;
+        } 
+    }
+
+    &__cart {
+        position: relative;
+        .cart_items_numbre {
+            position: absolute;
+            background-color: rgb(241, 119, 52);
+            color: #f4f4f4;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            top: -10px;
+            right: -10px;
+            text-align: center;
+        }
+    }
+
+    &__search_mobile_input {
+        display: none;
+        padding-top: 0.5rem;
+        padding-bottom: 1rem;
+        transition: 0.5s all ease-in-out;
+        input {
+            color: $grey;
+            text-align: center;
+            line-height: 1.5rem;
+            width: 100%;
+            border-width: 1px;
+            border-color: #dbe0e2;
+            background-color: #ffffff;
+            border-style: solid;
+            border-radius: 3px;
+            box-shadow: 0px 0px 5px rgba(104, 168, 224, .75);
+            padding: 0.5rem 1rem;
+            &:focus {
+                outline: none;
+            }
+        }
+    
+    }
+    &__search_mobile_input.show {
+        display: block;
+    }
+    //////////////////////////////////
+
+    &__menu {
+            background-color: #f4f4f4;
+            color: #6b7a83;
+            z-index: 2;
+            padding: 1rem;
+            
+
+            @include breakpoint-down(medium){
+                position: fixed;
+                top: 5rem;
+                left: -100%;
+                width: 50%;
+                height: 100%;
+                padding: 1rem;
+                transition: .5s;
+            }
+
+            .container {
+                display: flex;
+                justify-content: space-between;
+                @include breakpoint-down(medium) {
+                    display: block;
+                }
+            }
+
+    }
+
+    &__menu.show {
+        left: 0;
+    }
+        
+    &__links {
+        list-style: none;
+        display: flex;
+        padding-left: 0;
+
+        li {
+            margin-right: 1.5rem;
+            padding: 0 0.5rem;
+            font-weight: bold;
+            @include breakpoint-down(medium) {
+                margin-left: 0;
+                padding : 1rem 0;
+            }
+
+            a:hover{
+                color: $primary;
+            }
+
+            &:last-child{
+                margin-right: 0;
+            }
+        }
+
+        @include breakpoint-down(medium) {
+            flex-direction: column;
+        }
+    }
+}

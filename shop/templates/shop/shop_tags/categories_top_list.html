@@ -1,0 +1,14 @@
+{% load i18n %}
+<div class="categories">
+    <ul class="categories__top_list">
+        <li>TOP CATEGORIES</li>
+        <li><a href="{{ fashion.get_absolute_url }}"><i class="fas fa-tshirt"></i>{{ fashion.name }}</a></li>
+        <li><a href="{{ electronics.get_absolute_url }}"><i class="fas fa-desktop"></i>{{ electronics.name }}</a></li>
+        <li><a href="{{ gifts.get_absolute_url }}"><i class="fas fa-gift"></i>{{ gifts.name }}</a></li>
+        <li><a href="{{ home.get_absolute_url }}"><i class="fas fa-home"></i>{{ home.name }}</a></li>
+        <li><a href="{{ music.get_absolute_url }}"><i class="fas fa-music"></i>{{ music.name }}</a></li>
+        <li><a href="{{ sports.get_absolute_url }}"><i class="fas fa-dumbbell"></i>{{ sports.name }}</a></li>
+        <li class="button"><a href="{% url 'shop:product_list'%}">{% trans "All" %}</a></li>
+        <li class="button"><a href="#">{% trans "HUGE SALE - 70% Off" %}</a></li>
+    </ul>
+</div>

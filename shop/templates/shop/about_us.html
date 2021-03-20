@@ -1,0 +1,36 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% load i18n %}
+{% block title %} About Us - Online Shop {% endblock %}
+{% block head %}
+ 
+{% endblock %}
+
+{% block content %}
+<div class="about_us">
+    <div class="about_us_cover">
+        <img src="{% static 'img/top-bg.jpg'%}" alt="">
+        <div class="container container--px">
+            <div class="about_us_cover_text">
+                <h5>ABOUT US</h3>
+                <h3>Our company</h2>
+                <a href="#" class="button">contact</a>
+            </div>
+        </div>
+    </div>
+    <div class="about_us_content">
+        <div class="container container--px">
+            <h1>
+                Our Story
+            </h1>
+            <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vitae iusto assumenda modi, commodi iste voluptates inventore omnis deserunt eius consectetur necessitatibus, numquam similique ducimus qui nemo illo tempora odit distinctio.
+            </p>
+             <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vitae iusto assumenda modi, commodi iste voluptates inventore omnis deserunt eius consectetur necessitatibus, numquam similique ducimus qui nemo illo tempora odit distinctio.
+            </p>
+            <p>“ Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model search for evolved over sometimes by accident, sometimes on purpose ”</p>
+        </div>
+    </div>
+</div>  
+{% endblock %}

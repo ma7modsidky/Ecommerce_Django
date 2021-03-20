@@ -1,33 +1,167 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <title>{% block title %}My shop{% endblock %}</title>
-        <link href="{% static "css/base.css" %}" rel="stylesheet">
-    </head>
-    <body>
-        <div id="header">
-            <a href="/" class="logo">My shop</a>
-        </div>
-        <div id="subheader">
-            <div class="cart">
-                {% with total_items=cart|length %}
-                {% if total_items > 0 %}
-                    Your cart:
-                    <a href="{% url "cart:cart_detail" %}">
-                    {{ total_items }} item{{ total_items|pluralize }},
-                    ${{ cart.get_total_price }}
-                    </a>
-                    {% else %}
-                    Your cart is empty.
-                {% endif %}
-                {% endwith %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/8a6bd92f89.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2.2.1/src/js.cookie.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet"> 
+    <link href="{% static "css/styles.css" %}" rel="stylesheet">
+    {% block head %}
+    {% endblock %}
+    
+    <title>Online Shop</title>
+</head>
+<body>
+    <header class="header">
+        <div class="container container--px">
+            <nav class="flex flex-ai-c flex-jc-sb">
+                <a href="#" id="btnHamburger" class="header__toggle hide-for-desktop ">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </a>
+
+                <a href="" class="header__logo">
+                    <img src="{% static "img/logo_white.png"%}" alt="logo">
+                </a>
+
+                <div class="header__search hide-for-mobile">
+                    <form action="{% url 'shop:product_search'%}">
+                        {% comment %} <input type="text" placeholder="search"> {% endcomment %}
+                        {{ search_form }}
+                        <button type="submit"><i class="fas fa-search"></i></button>
+
+                    </form>
+                </div>
+                
+                <div class="header__right_section flex flex-ai-c ">
+
+                    <div class="header__custom_block hide-for-mobile">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>
+                            Call us now<br>
+                            <b>+201111504980</b>
+                        </span>
+                    </div>
+    
+                    <div class="header__search_mobile hide-for-desktop" id="toggleSearch">
+                        <a href="#"><i class="fas fa-search"></i></a>
+                    </div>
+    
+                    <div class="header__cart">
+                        <a href="{% url "cart:cart_detail" %}" id='cart_icon'>
+                            <i class="fas fa-shopping-cart"></i>
+                            {% with total_items=cart|length %}
+                            {% if total_items > 0 %}
+                            <div class="cart_items_numbre">{{ total_items}}</div>
+                            {%else%}
+                            <div class="cart_items_numbre">0</div>
+                            {% endif %}
+                            {% endwith %}
+                        </a>
+                    </div>
+
+                    <div class="header__user">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+
+            </nav>
+            <div class="header__search_mobile_input hide-for-desktop" id="mobileSearch">
+                <input type="text" placeholder="search">
             </div>
         </div>
-        <div id="content">
+    </header>
+    <div class="header__menu" id="header__menu">
+        <div class="container container--px">
+            <ul class="header__links ">
+                <li><a href="{% url "shop:home" %}">Home</a></li>
+                <li><a href="{% url "shop:product_list" %}">Categories</a></li>
+                <li><a href="{% url "shop:product_list" %}">Products</a></li>
+                <li><a href="{% url "shop:about_us" %}">About us</a></li>
+                <li><a href="{% url "shop:contact_us" %}">Contacts us</a></li>
+            </ul>
+            <ul class="header__links ">
+                {% if request.user.is_authenticated %}
+                    <li>Hello &nbsp;{{ request.user.first_name }}</li>
+                    <li><a href="{% url "logout" %}">Logout</a></li>
+                {% else %}
+                    <li><a href="{% url "login"%}">Log in</a></li>
+                    <li><a href="{% url "register"%}">Register</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    <div id="content">
             {% block content %}
             {% endblock %}
+    </div>
+    <footer class="footer">
+        <div class="container container--px">
+            <div class="footer__contact">
+                <h3>Contact Information</h3>
+                <p class="address"><span>Address</span><br>123 Street Name, City, England</p>
+                <p class="phone"><span>Phone</span><br>(123) 456-7890</p>
+                <p class="Email"><span>Email</span><br>mail@example.com</p>
+                <p class="workdays"><span>Working Days/Hours</span><br>Mon - Sun / 9:00AM - 8:00PM</p>
+                <div class="footer_social">
+                    <div class="facebook"><i class="fab fa-facebook-f"></i></div>
+                    <div class="twitter"><i class="fab fa-twitter"></i></div>
+                    <div class="linkedin"><i class="fab fa-linkedin-in"></i></div>
+                </div>
+            </div>
+            <div class="footer__subscripe">
+                <div class="subscripe_text">
+                    <h3>BE THE FIRST TO KNOW</h3>
+                    <p>Get all the latest information on Events, Sales and Offers. <br>
+                    Sign up for newsletter today.</p>
+                </div>
+                <div class="subscripe_email">
+                    <form action="POST">
+                        <input type="email" name="email" id="subscripe_email" placeholder="Email address">
+                        <input type="submit" value="subscripe" class="button">
+                    </form>
+                </div>
+            </div>
+            <div class="account_links">
+                <h3>MY ACCOUNT</h3>
+                <ul>
+                    <li><a href="#">Login</a></li>
+                    <li><a href="#">My Account</a></li>
+                    <li><a href="#">Order history</a></li>
+                    <li><a href="#">Advanced search</a></li>
+                    <li><a href="#">About us</a></li>
+                    <li><a href="#">Contact us</a></li>
+                </ul>
+            </div>
+            <div class="features_links">
+                <h3>Main Features</h3>
+                <ul>
+                    <li>Super Fast Theme</li>
+                    <li>Ajax</li>
+                    <li>Responsive</li>
+                    <li>Powerful Admin Panel</li>
+                    <li>Unlimited Categories and Products</li>
+                </ul>
+            </div>
+            <div class="footer__copyrights">
+                <p>© Mahmoud Sidky eCommerce. 2021. All Rights Reserved</p>
+                <img src="{% static 'img/payment-icon.png'%}" alt="">  
+            </div>
         </div>
-    </body>
+    </footer>
+    <script src="{% static "js/header.js" %}"></script>
+    <script>
+        const csrftoken =  Cookies.get('csrftoken');
+        document.addEventListener('DOMContentLoaded', () => {
+            {% block domready %}
+            {% endblock %}
+            });
+    </script>
+</body>
 </html>

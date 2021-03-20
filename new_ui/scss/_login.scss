@@ -1,0 +1,38 @@
+.login {
+    
+    &__box1 {
+        flex: 1;
+        form p > * {
+            display: block;
+            margin: 1rem 0;
+        }
+
+        input {
+            padding: 0.8rem 0.5rem;
+            width: 60%;
+            @include breakpoint-down(small) {
+                width: 100%;
+            }
+
+        }
+    }
+    &__box2 {
+        flex: 1 ;
+        @include breakpoint-down(medium) {
+            margin-top: 2rem;
+        }
+    }
+
+    .button {
+        display: inline-block;
+        margin-top: 1rem;
+        padding: 0.8rem;
+        background-color: $primary;
+        color: white;
+        font-weight: 600;
+        text-transform: uppercase;
+        outline: none;
+        cursor: pointer;
+    }
+
+}
