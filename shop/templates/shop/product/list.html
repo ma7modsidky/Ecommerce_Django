@@ -14,8 +14,13 @@
             {% custom_banner %}
         </div>
         <div class="products__content">
-
+ 
+        {% if not query %}
             <h2 class="">{% if category %}{{ category.name }}{% else %}{% trans 'All Products' %}{% endif %}</h2>
+            {% else %}
+            <h3>{% trans 'search results for' %} {{query}}</h3>
+        {% endif %}
+                
             <div class="products__container">
                 {% if products|length > 0 %}
                 {% for product in products %}

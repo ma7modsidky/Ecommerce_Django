@@ -47,8 +47,8 @@
                             {% csrf_token %}
                         </form>
                     </td>
-                    <td class="num">${{ item.price }}</td>
-                    <td class="num">${{ item.total_price }}</td>
+                    <td class="num"><span class="hide-for-desktop">unit price: </span>${{ item.price }}</td>
+                    <td class="num"><span class="hide-for-desktop">total price: </span>${{ item.total_price }}</td>
                 </tr>
                 {% endwith %}
                 {% endfor %}

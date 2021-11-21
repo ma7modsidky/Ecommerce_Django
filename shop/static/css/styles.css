@@ -189,11 +189,27 @@ h1, h2, h3 {
 }
 
 #content {
+  margin-top: 9rem;
   margin-bottom: 2rem;
 }
 
+@media (max-width: 63.9375em) {
+  #content {
+    margin-top: 6rem;
+  }
+}
+
+.custom_banner_block {
+  font-weight: bold;
+}
+
 .header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 20;
   background-color: #0083c1;
+  font-size: 0.8rem;
 }
 
 .header__logo img {
@@ -225,7 +241,7 @@ h1, h2, h3 {
   width: 100%;
   padding: 1rem 2rem;
   padding: 10px;
-  font-size: 16px;
+  font-size: 0.8rem;
   border-width: 1px;
   border-color: #dbe0e2;
   background-color: #ffffff;
@@ -362,9 +378,9 @@ h1, h2, h3 {
 @media (max-width: 63.9375em) {
   .header__menu {
     position: fixed;
-    top: 5rem;
+    top: 5.3rem;
     left: -100%;
-    width: 50%;
+    width: auto;
     height: 100%;
     padding: 1rem;
     -webkit-transition: .5s;
@@ -925,7 +941,7 @@ h1, h2, h3 {
       -ms-flex: 3;
           flex: 3;
   font-size: 0.9rem;
-  font-weight: 300;
+  font-weight: bold;
   color: #6b7a83;
   margin: 0;
 }
@@ -992,9 +1008,32 @@ h1, h2, h3 {
   color: #0083c1;
 }
 
+@media (max-width: 63.9375em) {
+  .cart__table thead tr {
+    display: none;
+  }
+}
+
 .cart__table tbody tr td img {
   width: 150px;
   height: auto;
+}
+
+@media (max-width: 63.9375em) {
+  .cart__table tbody tr {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    padding: 0.5rem;
+    gap: 0.5rem;
+    border-bottom: 1px solid #ececec;
+    -webkit-box-shadow: #ececec 0px 2px 3px 0px;
+            box-shadow: #ececec 0px 2px 3px 0px;
+  }
 }
 
 .cart__table tbody tr td select,

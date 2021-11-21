@@ -15,7 +15,7 @@
             {% custom_banner %} 
         </div>
         <div class="home__content">
-            <h2>Latest Deals</h2>
+            <h2>{% trans "Latest Deals" %}</h2>
             
             <div class="swiper-container">
                 
@@ -44,7 +44,7 @@
                     </div>
                 </div>
                
-                <div class="swiper-pagination"></div>
+                {% comment %} <div class="swiper-pagination"></div> {% endcomment %}
 
             </div>
 
@@ -76,7 +76,7 @@
                     </div>
                 {% endfor %}
                 {% else %}
-               <p>No Products Found</p>
+               <p>{% trans "No Products Found" %}</p>
                 {% endif %}
             </div>
         </div>

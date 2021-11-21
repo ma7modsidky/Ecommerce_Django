@@ -17,7 +17,7 @@
         <div class="product__page_details">
             <h2>{{ product.name }}</h2>
             {{ product.description|linebreaks }}
-            As low as
+            {% trans "As low as" %}
             <div class="price">
                 ${{ product.price }}
             </div>

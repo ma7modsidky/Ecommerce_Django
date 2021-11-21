@@ -171,5 +171,13 @@ h1,h2,h3 {
 }
 
 #content {
+    margin-top: 9rem;
     margin-bottom: 2rem;
+     @include breakpoint-down(medium) {
+        margin-top: 6rem;
+     }
+}
+
+.custom_banner_block {
+    font-weight: bold;
 }

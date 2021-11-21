@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,6 +16,9 @@
     {% endblock %}
     
     <title>Online Shop</title>
+    {% get_current_language as LANGUAGE_CODE %}
+    {% get_available_languages as LANGUAGES %}
+    {% get_language_info_list for LANGUAGES as languages %}
 </head>
 <body>
     <header class="header">
@@ -32,7 +36,6 @@
 
                 <div class="header__search hide-for-mobile">
                     <form action="{% url 'shop:product_search'%}">
-                        {% comment %} <input type="text" placeholder="search"> {% endcomment %}
                         {{ search_form }}
                         <button type="submit"><i class="fas fa-search"></i></button>
 
@@ -44,7 +47,7 @@
                     <div class="header__custom_block hide-for-mobile">
                         <i class="fas fa-phone-alt"></i>
                         <span>
-                            Call us now<br>
+                            {% trans "Call us now" %}<br>
                             <b>+201111504980</b>
                         </span>
                     </div>
@@ -73,30 +76,43 @@
 
             </nav>
             <div class="header__search_mobile_input hide-for-desktop" id="mobileSearch">
-                <input type="text" placeholder="search">
+                <form action="{% url 'shop:product_search'%}" method="get">
+                    {% csrf_token %}
+                    {{ search_form }}
+                </form>
             </div>
         </div>
+         <div class="header__menu" id="header__menu">
+             <div class="container container--px">
+                 <ul class="header__links ">
+                     <li><a href="{% url "shop:home" %}">{% trans "Home" %}</a></li>
+                     <li><a href="{% url "shop:product_list" %}">{% trans "Categories" %}</a></li>
+                     <li><a href="{% url "shop:product_list" %}">{% trans "Products" %}</a></li>
+                     <li><a href="{% url "shop:about_us" %}">{% trans "About us" %}</a></li>
+                     <li><a href="{% url "shop:contact_us" %}">{% trans "Contacts us" %}</a></li>
+                     {% if LANGUAGE_CODE == 'en' %}
+                     <li>
+                         <a href="/ar/{{ request.get_full_path|slice:'4:'}}">العربية</a>
+                     </li>
+                     {% else %}
+                     <li>
+                         <a href="/en/{{request.get_full_path|slice:'4:'}}">English</a>
+                     </li>
+                     {% endif %}
+                 </ul>
+                 <ul class="header__links ">
+                     {% if request.user.is_authenticated %}
+                     <li>{% trans "Hello" %} &nbsp;{{ request.user.first_name }}</li>
+                     <li><a href="{% url "logout" %}">{% trans "Logout" %}</a></li>
+                     {% else %}
+                     <li><a href="{% url "login"%}">{% trans "Log in" %}</a></li>
+                     <li><a href="{% url "register"%}">{% trans "Register" %}</a></li>
+                     {% endif %}
+                 </ul>
+             </div>
+         </div>
     </header>
-    <div class="header__menu" id="header__menu">
-        <div class="container container--px">
-            <ul class="header__links ">
-                <li><a href="{% url "shop:home" %}">Home</a></li>
-                <li><a href="{% url "shop:product_list" %}">Categories</a></li>
-                <li><a href="{% url "shop:product_list" %}">Products</a></li>
-                <li><a href="{% url "shop:about_us" %}">About us</a></li>
-                <li><a href="{% url "shop:contact_us" %}">Contacts us</a></li>
-            </ul>
-            <ul class="header__links ">
-                {% if request.user.is_authenticated %}
-                    <li>Hello &nbsp;{{ request.user.first_name }}</li>
-                    <li><a href="{% url "logout" %}">Logout</a></li>
-                {% else %}
-                    <li><a href="{% url "login"%}">Log in</a></li>
-                    <li><a href="{% url "register"%}">Register</a></li>
-                {% endif %}
-            </ul>
-        </div>
-    </div>
+   
     <div id="content">
             {% block content %}
             {% endblock %}
@@ -104,11 +120,13 @@
     <footer class="footer">
         <div class="container container--px">
             <div class="footer__contact">
-                <h3>Contact Information</h3>
-                <p class="address"><span>Address</span><br>123 Street Name, City, England</p>
-                <p class="phone"><span>Phone</span><br>(123) 456-7890</p>
-                <p class="Email"><span>Email</span><br>mail@example.com</p>
-                <p class="workdays"><span>Working Days/Hours</span><br>Mon - Sun / 9:00AM - 8:00PM</p>
+                <h3>{% trans "Contact Information" %}</h3>
+                <p class="address"><span>{% trans "Address" %}</span><br>123 Street Name, City,
+                    England</p>
+                <p class="phone"><span>{% trans "Phone" %}</span><br>(123) 456-7890</p>
+                <p class="Email"><span>{% trans "Email" %}</span><br>mail@example.com</p>
+                <p class="workdays"><span>{% trans "Working Days/Hours" %}</span><br>Mon - Sun / 9:00AM - 8:00PM
+                </p>
                 <div class="footer_social">
                     <div class="facebook"><i class="fab fa-facebook-f"></i></div>
                     <div class="twitter"><i class="fab fa-twitter"></i></div>
@@ -117,9 +135,10 @@
             </div>
             <div class="footer__subscripe">
                 <div class="subscripe_text">
-                    <h3>BE THE FIRST TO KNOW</h3>
-                    <p>Get all the latest information on Events, Sales and Offers. <br>
-                    Sign up for newsletter today.</p>
+                    <h3>{% trans "BE THE FIRST TO KNOW" %}</h3>
+                    <p>{% trans "Get all the latest information on Events, Sales and Offers." %}
+                        <br>
+                    {% trans "Sign up for newsletter today." %}</p>
                 </div>
                 <div class="subscripe_email">
                     <form action="POST">
@@ -129,14 +148,14 @@
                 </div>
             </div>
             <div class="account_links">
-                <h3>MY ACCOUNT</h3>
+                <h3>{% trans "My Account" %}</h3>
                 <ul>
-                    <li><a href="#">Login</a></li>
-                    <li><a href="#">My Account</a></li>
-                    <li><a href="#">Order history</a></li>
-                    <li><a href="#">Advanced search</a></li>
-                    <li><a href="#">About us</a></li>
-                    <li><a href="#">Contact us</a></li>
+                    <li><a href="#">{% trans "Login" %}</a></li>
+                    <li><a href="#">{% trans "My Account" %}</a></li>
+                    <li><a href="#">{% trans "Order history" %}</a></li>
+                    <li><a href="#">{% trans "Advanced search" %}</a></li>
+                    <li><a href="#">{% trans "About us" %}</a></li>
+                    <li><a href="#">{% trans "Contact us" %}</a></li>
                 </ul>
             </div>
             <div class="features_links">

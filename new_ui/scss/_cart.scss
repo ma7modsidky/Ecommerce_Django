@@ -43,11 +43,24 @@
             width: 100%;
             text-align: center;
             color: $primary;
+            @include breakpoint-down(medium) {
+                display: none;
+            }
 
         }
         tbody tr td img {
             width: 150px;
             height: auto;
+        }
+        tbody tr {
+            @include breakpoint-down(medium) {
+                display: flex;
+                flex-direction: column;
+                padding: 0.5rem;
+                gap: 0.5rem;
+                border-bottom: 1px solid #ececec;
+                box-shadow: #ececec 0px 2px 3px 0px;
+            }
         }
         tbody tr td select,
         tbody tr td input {

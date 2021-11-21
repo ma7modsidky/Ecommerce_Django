@@ -1,16 +1,21 @@
 {% load static %}
+{% load i18n %}
 <div class="custom_banner">
     <div class="custom_banner_block">
         <i class="fas fa-shipping-fast"></i>
-        <h3>FREE <br> SHIPPING</h3>
+        <h3> 
+        {% blocktrans %}
+         FREE <br> SHIPPING
+        {% endblocktrans %}
+         </h3> 
     </div>
-    <div class="custom_banner_block">
+    <div class="custom_banner_block" style='font-weight: bold;'>
         <i class="fas fa-dollar-sign"></i>
-        <h3>100% MONEY <br> BACK GUARANTEE</h3>
+        <h3>{% trans "100% MONEY <br> BACK GUARANTEE" %}</h3>
     </div>
     <div class="custom_banner_block">
         <i class="fas fa-headset"></i>
-        <h3>ONLINE <br> SUPPORT 24/7</h3>
+        <h3>{% blocktrans %}ONLINE <br> SUPPORT 24/7{% endblocktrans %}</h3>
     </div>
     <div class="custom_banner_image">
         <img src="{% static 'img/sidebar-banner.jpg'%}" alt="">

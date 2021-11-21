@@ -170,7 +170,8 @@ BRAINTREE_CONF = braintree.Configuration(
     BRAINTREE_PRIVATE_KEY
 )
 
-LOGIN_REDIRECT_URL = 'dashboard'
+
+LOGIN_REDIRECT_URL = 'shop:home'
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 

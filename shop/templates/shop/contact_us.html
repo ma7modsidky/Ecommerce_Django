@@ -7,21 +7,21 @@
     <div class="contact_us">
         <div class="container container--px">
             
-            <h2>Contact us</h2>
+            <h2>{% trans "Contact us" %}</h2>
             <div class="block_custom">
                 <form action="#" method="post">
-                    <h3>Write us</h3>
+                    <h3>{% trans "Write us" %}</h3>
                     {% csrf_token %}
                     {{ form.as_p }}
                     <input type="submit" value="Send message" class="button">
                 </form>
 
                 <div class="contact_us_details">
-                   <h3>Contact Information</h3>
-                    <p class="address"><span>Address</span><br>123 Street Name, City, England</p>
-                    <p class="phone"><span>Phone</span><br>(123) 456-7890</p>
-                    <p class="Email"><span>Email</span><br>mail@example.com</p>
-                    <p class="workdays"><span>Working Days/Hours</span><br>Mon - Sun / 9:00AM - 8:00PM</p>
+                   <h3>{% trans "Contact Information" %}</h3>
+                    <p class="address"><span>{% trans "Address" %}</span><br>123 Street Name, City, England</p>
+                    <p class="phone"><span>{% trans "Phone" %}</span><br>(123) 456-7890</p>
+                    <p class="Email"><span>{% trans "Email" %}</span><br>mail@example.com</p>
+                    <p class="workdays"><span>{% trans "Working Days/Hours" %}</span><br>Mon - Sun / 9:00AM - 8:00PM</p>
                     <div class="footer_social">
                         <div class="facebook"><i class="fab fa-facebook-f"></i></div>
                         <div class="twitter"><i class="fab fa-twitter"></i></div>
