@@ -1,1 +1,2 @@
-..\env\myshop\Scripts\activate
+admin account
+mahmoud : 12345
